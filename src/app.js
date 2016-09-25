@@ -38,11 +38,15 @@ let paletteTemplate = (palette)=>{
 	`
 }
 
+let average = (array, subIndex)=>{
+	return Math.floor(array.reduce((count, item)=>{ 
+		return count + item[subIndex] 
+	}, 0 ) / array.length)
+}
+
 let averageColorValue = (palette)=>{
 	return [
-		Math.floor(palette.reduce((count, palette)=>{ return count + palette[0] }, 0 ) / palette.length),
-		Math.floor(palette.reduce((count, palette)=>{ return count + palette[1] }, 0 ) / palette.length),
-		Math.floor(palette.reduce((count, palette)=>{ return count + palette[2] }, 0 ) / palette.length)
+		average(palette, 0), average(palette, 1), average(palette, 2)
 	]
 }
 
@@ -69,6 +73,8 @@ let averageColorValue = (palette)=>{
 		state.colorContainer().innerHTML = `<h1>Selected color</h1>${colorTemplate(color,1)}	`
 		state.averageContainer().innerHTML = `<h1>Average values</h1>${colorTemplate(averageColorValue(palette))}`
 		state.paletteContainer().innerHTML = paletteTemplate(palette, 3)
+
+		document.querySelector('body').style.backgroundColor = `rgb(${color[0]},${color[1]},${color[2]})`
 
 	}, 1000);
 

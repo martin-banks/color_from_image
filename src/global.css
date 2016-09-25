@@ -1,6 +1,7 @@
 *{
 	margin: 0;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 img {
@@ -15,6 +16,7 @@ img {
 	height: 100px;
 	display: inline-block;
 	margin-bottom: 10px;
+	border: solid 1px #fff;
 }
 
 section {
